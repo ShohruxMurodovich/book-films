@@ -87,6 +87,36 @@
   justify-content: center;
 }
 
+.search-film{
+  text-align: center;
+  width: 200px;
+  padding: 8px 10px;
+  border-radius: 15px;
+  border: 2px solid lightskyblue;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.dark .search-film{
+  background-color: black;
+  color: #fff;
+}
+
+.search-film:hover{
+  box-shadow: #5E5DF0 0 10px 20px -10px;
+  border: 2px solid #5E5DF0;
+  outline: none;
+}
+
+.search-film:focus{
+  box-shadow: #5E5DF0 0 10px 20px -10px;
+  border: 2px solid #5E5DF0;
+  outline: none;
+}
+
 
 .dark-mode{
   display: block;

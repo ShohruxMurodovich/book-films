@@ -3,7 +3,7 @@ var elBookList = document.querySelector(".book__list");
 let elDarkBtn = document.querySelector(".dark-mode");
 let elBody = document.querySelector(".body");
 
-const localBook = JSON.parse(window.localStorage.getItem("list"));
+const localBook = JSON.parse(window.localStorage.getItem("list"))
 let bookedFilms = localBook || [];
 
 
@@ -80,7 +80,7 @@ function newLists (arr, element){
     elRemoveBtn.dataset.dataId = e.id;
     elBookItem.setAttribute("class", "bookmark__item");
     elRemoveBtn.setAttribute("class", "bookmark__btn");
-
+    window.localStorage.setItem("list", JSON.stringify(bookedFilms));
     elBookList.appendChild(elBookItem);
     elBookItem.appendChild(elRemoveBtn);
 
@@ -97,9 +97,28 @@ elList.addEventListener("click", evt=>{
       bookedFilms.push(searchBtn);
     }
   }
+  window.localStorage.setItem("list", JSON.stringify(bookedFilms))
   newLists(bookedFilms , elBookList)
-  window.localStorage.setItem("list", JSON.stringify(bookedFilms));
 })
+
+
+let inpSearch = document.querySelector(".search-film");
+
+inpSearch.addEventListener("input", searching =>{
+
+  elList.innerHTML = "";
+
+  let filmName = films.filter(name => {
+
+      let nameLower = name.title.toLowerCase();
+
+      if (nameLower.includes(inpSearch.value)) return name;
+
+  })
+  window.localStorage.setItem("list", JSON.stringify(bookedFilms))
+  renderFilms(filmName, elList)
+});
+
 
 
 
@@ -109,8 +128,8 @@ elBookList.addEventListener("click", evt => {
     let btnIdSecond = evt.target.dataset.dataId;
     let findArr = bookedFilms.findIndex(films => films.id == btnIdSecond);
     bookedFilms.splice(findArr, 1);
+    window.localStorage.setItem("list", JSON.stringify(bookedFilms))
     newLists(bookedFilms,elBookList);
-    window.localStorage.setItem("list", JSON.stringify(bookedFilms));
   }
 
 })
@@ -129,9 +148,9 @@ form.addEventListener("submit", evt =>{
     filterFilms = films.filter(element => element.genres.includes(selectVal));
   }
 
-  renderFilms(filterFilms, elList);
 
-  window.localStorage.setItem("list", JSON.stringify(bookedFilms));
+  window.localStorage.setItem("list", JSON.stringify(bookedFilms))
+  renderFilms(filterFilms, elList);
 })
 
 
