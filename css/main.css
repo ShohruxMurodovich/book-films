@@ -1,3 +1,27 @@
+.dark{
+  background-color: black;
+}
+
+.dark .book__title{
+  color: #fff;
+}
+
+.dark h3 {
+  color: #fff;
+}
+
+.dark p {
+  color: #fff;
+}
+
+.dark li {
+  color: #fff;
+}
+
+.dark .dark-mode__img{
+  fill: #fff;
+}
+
 .wrapper{
   display: flex;
 }
@@ -14,6 +38,7 @@
   padding: 0;
   list-style-type: none;
 }
+
 .list__item{
   width: 27%;
   padding: 15px;
@@ -49,10 +74,31 @@
   border: 2px solid lightskyblue;
 }
 
+
+.case{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 #form{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+.dark-mode{
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+}
+
+.dark-mode__img{
+  width: 30px;
+  height: 30px;
 }
 
 
@@ -73,23 +119,27 @@
   border: 0;
 }
 
+
+
 .book__title{
   width: 100%;
   display: block;
-  margin-left: 190px;
+  margin-left: 110px;
   margin-bottom: 20px;
 }
 
 
+
+
 .book__btn{
-  width: 110px;
+  width: 100px;
   border: none;
   margin-left: 10px;
   text-align: center;
   color: #fff;
   padding: 10px 15px;
   border-radius: 3px;
-  background: #497BE8;
+  background: #5E5DF0;
   opacity: 0.6;
   transition: all 0.3s ease;
 }
@@ -101,7 +151,7 @@
 
 
 .bookmark__btn{
-  width: 110px;
+  width: 100px;
   border: none;
   margin-left: 10px;
   text-align: center;
@@ -118,7 +168,7 @@
 }
 
 .bookmark__item{
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
   margin-bottom: 15px;
 }

@@ -1,7 +1,11 @@
 var elList = document.querySelector(".list");
-var elBookList = document.querySelector(".book__list")
+var elBookList = document.querySelector(".book__list");
+let elDarkBtn = document.querySelector(".dark-mode");
+let elBody = document.querySelector(".body");
 
-let bookedFilms = [];
+const localBook = JSON.parse(window.localStorage.getItem("list"));
+let bookedFilms = localBook || [];
+
 
 
 
@@ -20,11 +24,7 @@ function renderFilms(arr, element){
     newBtn.textContent = "Bookmark";
     newBtn.dataset.dataId = films.id;
 
-    // for(var genre of film.genres){
-    //   var newSubItem = document.createElement("li");
-    //   newSubItem.textContent = genre;
-    //   newSubList.appendChild(newSubItem);
-    // }
+
 
     newItem.setAttribute("class", "list__item");
     newImg.setAttribute("src", films.poster);
@@ -85,6 +85,7 @@ function newLists (arr, element){
     elBookItem.appendChild(elRemoveBtn);
 
   })
+
 }
 
 
@@ -97,6 +98,7 @@ elList.addEventListener("click", evt=>{
     }
   }
   newLists(bookedFilms , elBookList)
+  window.localStorage.setItem("list", JSON.stringify(bookedFilms));
 })
 
 
@@ -108,6 +110,7 @@ elBookList.addEventListener("click", evt => {
     let findArr = bookedFilms.findIndex(films => films.id == btnIdSecond);
     bookedFilms.splice(findArr, 1);
     newLists(bookedFilms,elBookList);
+    window.localStorage.setItem("list", JSON.stringify(bookedFilms));
   }
 
 })
@@ -127,8 +130,17 @@ form.addEventListener("submit", evt =>{
   }
 
   renderFilms(filterFilms, elList);
+
+  window.localStorage.setItem("list", JSON.stringify(bookedFilms));
 })
+
+
+
 
 renderFilms(films, elList);
 
 renderGenes(films , select);
+
+elDarkBtn.addEventListener("click" , () => {
+  elBody.classList.toggle("dark");
+});
