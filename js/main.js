@@ -3,8 +3,10 @@ var elBookList = document.querySelector(".book__list");
 let elDarkBtn = document.querySelector(".dark-mode");
 let elBody = document.querySelector(".body");
 
-const localBook = JSON.parse(window.localStorage.getItem("list"))
+const localBook = JSON.parse(window.localStorage.getItem("list"));
 let bookedFilms = localBook || [];
+
+newLists(bookedFilms, elBookList);
 
 
 
